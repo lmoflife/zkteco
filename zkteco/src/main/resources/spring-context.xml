@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="ams_provider" />
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://192.168.1.50:2181" />
+    
+    
+    <dubbo:reference interface="com.dasu.core.ams.server.IUserServer" id="userService" check="false" />
+    <dubbo:reference interface="com.dasu.core.attence.server.IDeviceServer" id="deviceService" check="false" />
+    <dubbo:reference interface="com.dasu.core.attence.server.IAttenceUserServer" id="attenceUserService" check="false" />
+    <dubbo:reference interface="com.dasu.core.attence.server.IDepartAttenceConfigServer" id="departAttenceService" check="false" />
+    <dubbo:reference interface="com.dasu.core.attence.server.IUserAttenceServer" id="userAttenceService" check="false" />
+    <dubbo:reference interface="com.dasu.core.attence.server.ISystemServer" id="systemService" check="false" />
+    <dubbo:reference interface="com.dasu.core.attence.server.ILeaveServer" id="leaveService" check="false" />
+     <!-- 值班考勤配置服务-->
+    <dubbo:reference interface="com.dasu.core.attence.server.IDepartDutyConfigServer" id="dutyConfigServer" check="false" />
+    <!-- 值班服务-->
+    <dubbo:reference interface="com.dasu.core.attence.server.IDutyServer" id="dutyService" check="false" />
+     
+     
+</beans>
